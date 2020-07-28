@@ -1,0 +1,58 @@
+nav {
+  background: #36A0FF;
+}
+
+nav a {
+  color: #FFFFFF;
+  font-family: 'Oswald',sans-serif;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+form fieldset legend {
+  color: #36A0FF;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+form fieldset label {
+  color: #36A0FF;
+  font-weight: bold;
+}
+
+form fieldset button {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+/*SASS : TABLAS */
+table thead tr th {
+  background: #36A0FF;
+  color: #FFFFFF;
+}
+
+table td {
+  background: #f7f1f1;
+}
+
+.custab {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5% 0;
+  -webkit-box-shadow: 3px 3px 2px #ccc;
+          box-shadow: 3px 3px 2px #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.custab:hover {
+  -webkit-box-shadow: 3px 3px 0px transparent;
+          box-shadow: 3px 3px 0px transparent;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body {
+  background: #f7f1f1;
+}
+/*# sourceMappingURL=StyleadminProducts.css.map */

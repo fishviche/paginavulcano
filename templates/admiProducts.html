@@ -1,0 +1,131 @@
+
+{% extends "layout.html" %}
+{% block head %}
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleadminProducts/StyleadminProducts.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleredesSociales/pantalla.css')}}"> <!--OBSERVACION-->
+{% endblock %}
+{% block body %}
+<!--PANTALLA DE CARGA-->
+<article class="hidden" id="body">    
+
+<!--NAVBAR-->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand ml-5" href="#">TIENDA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/infoGeneral">Informacion general</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/ConfigRedesSociales">Redes sociales</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/contactosRecibidos">Contactos</a>
+            </li>
+          </ul>
+          <span class="navbar-text mr-5">
+            <a href="/logout">Salir Sesión</a> 
+          </span>
+        </div>
+      </nav>
+</div>
+
+
+
+    <!--Añadido recien-->
+    <h3>Crear Categorías</h3>
+    <form method="POST" action="{{url_for('NewCategoria')}}">
+        <label for="Categoria">Crear nueva categoría</label>
+        <input type="text" name="Categoria" id="Categoria" placeholder="Ingrese la categoría">
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <table class="table">
+        <thead>
+            <td>Nombre</td>
+            <td>Acción</td>
+        </thead>
+        <tbody>
+            {% for category in categorias %}
+            <tr>
+                <td>{{category['NewCategoria']}}</td>
+                <td>
+                    <a href="/deleteCategoria/{{category['_id']['$oid']}}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+
+    <!---->
+
+    <hr>
+    <form method="POST" action="{{url_for('get_products')}}" enctype="multipart/form-data">
+        <label for="NombreProduct">Nombre del Producto</label>
+        <input type="text" class="form-control" name="NombreProduct" placeholder="Ingrese el nombre">
+    
+        <label for="Descripcion"> Descripción </label>
+        <input type="text" class="form-control" name="Descripcion" placeholder="Ingrese la descripción">
+    
+        <label for="Price">Precio</label>
+        <input type="text" class="form-control" name="Price" placeholder="Ingrese el precio">
+        
+        <label for="Imagen">Imagen</label>
+        <input type="file" name="ImagenProduct" id="ImagenProduct">
+
+        <!--Añadido recientemente-->
+        <label for="Categorias">Categorías</label>
+        <select name="Categorias">
+
+            <option selected>Sin categoría</option>
+
+            {% for category in categorias%}
+            <option>{{category['NewCategoria']}}</option>
+            {% endfor %}
+            
+        </select>
+        <!---->
+
+        <button type="submit">Guardar</button>
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <td>Nombre</td>
+            <td>Descripción</td>
+            <td>Precio</td>
+            <td>Acciones</td>
+            
+            <!--recien agregado-->
+            <td>Categoría</td>
+            <!--recien agregado-->
+        </thead>
+        <tbody>
+            {% for product in dataProducts %}
+            <tr>
+                <td>{{product['Nombre']}}</td>
+                <td>{{product['Descripcion']}}</td>
+                <td>{{product['Precio']}}</td>
+                <td>
+                    <a href="/deleteProduct/{{product['_id']['$oid']}}">Eliminar</a>
+                    <a href="/getProduct/{{product['_id']['$oid']}}">Editar/Aumentar descripción</a>
+                </td>
+
+                <!--recien agregado-->
+                <td>{{product['Categoria']}}</td>
+                <!--recien agregado-->
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<a href="/">Inicio</a>
+<hr>
+
+<div>
+    <img class="producto" src="../static/uploads/{{infoProducto['IDfoto']}}" alt="Producto">
+</div>
+<div>
+    {{infoProducto['Nombre']}}
+</div>
+<div>
+    {{infoProducto['Descripcion']}}
+</div>
+<div>
+    {{infoProducto['Precio']}}
+</div>
+
+<hr><hr>
+<div>
+    
+    {%for i in infoProducto['MoreDescripcion']%}
+        {{i}}<br>
+    {% endfor%}
+    
+</div>
+
+
+<hr>
+
+<h5>Contactenos:</h1>
+<a href="{{Whatsapp}}">Whatsapp</a>
+
+
+
+{% endblock %}

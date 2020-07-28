@@ -1,0 +1,71 @@
+
+{% extends "layout.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/Stylecontactos/contactos.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleredesSociales/pantalla.css')}}">
+{% endblock %}
+{% block body %}
+<article>
+    <style>
+        .hidden{
+            overflow: hidden;
+        }
+    </style>
+    <div class="centrado" id="onload">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="container">
+        <h3 class=" text-center pt-3 display-5 font-weight-bold">Messaging</h3>
+        <div class="messaging">
+              <div class="inbox_msg">
+                <div class="inbox_people">
+                  <div class="headind_srch">
+                    <div class="recent_heading">
+                      <h4>Recent</h4>
+                    </div>
+                    <div class="srch_bar">
+                      <div class="stylish-input-group">
+                        <span class="input-group-addon">
+                        </span> </div>
+                    </div>
+                  </div>
+                  <div class="inbox_chat">
+                    {% for product in dataProducts %}
+                    <div class="chat_list active_chat">
+                      <div class="chat_people">
+                        <div class="chat_img"><img src="../static/img/user-solid.svg" alt="sumil"></div>
+                        <div class="chat_ib">
+                            <h5>Nombre : {{product['Nombre']}}</h5>
+                            <h5>Email : {{product['Email']}}</h5>
+                            <h5>Telefono : {{product['Numero']}}</h5>
+                            <h5>Mensaje : 
+                                {%for i in product['Mensaje']%}
+                                {{i}}<br>
+                                {% endfor%}
+                            </h5>
+                            <a class='btn btn-info btn-xs' href="/deleteContact/{{product['_id']['$oid']}}"><span class="glyphicon glyphicon-edit"></span> Eliminar</a>
+                        </div>  
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a href="/admiProducts">Atras</a>
+    <a href="/logout">Salir Sesión</a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        window.onload=function(){
+        $('#onload').fadeOut();
+        $('#body').removeClass('hidden');
+        }
+    </script>
+
+</article>
+
+{% endblock %}

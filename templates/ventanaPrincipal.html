@@ -1,0 +1,110 @@
+
+{% extends "layout.html" %}
+{% block body %}
+<a href="/login">Login</a>
+
+<!--AÑADIDO RECIENTEMENTE-->
+<a href="/">Ventana Principal</a>
+<!--AÑADIDO RECIENTEMENTE-->
+
+<h2>{{redesInfo['NombreTienda']}}</h5>
+
+<!--AÑADIDO RECIENTEMENTE-->
+<hr>
+<h3>Catálogo</h3>
+    {% for category in categorias%}
+    <div>
+        <a href="/buscarProducto/{{category['NewCategoria']}}">{{category['NewCategoria']}}</a>
+    </div>
+    
+    {% endfor %}
+
+<hr>
+<!--AÑADIDO RECIENTEMENTE-->
+
+<hr><hr>
+
+    <div>
+        {% for product in dataProducts %}
+        <div>
+            <a href="/producto/{{product['_id']['$oid']}}"><img class="producto" src="../static/uploads/{{product['IDfoto']}}" alt="Producto"></a>
+        </div>
+        <div>
+            {{product['Nombre']}}
+        </div>
+        <div>
+            {{product['Descripcion']}}
+        </div>
+        <div>
+            {{product['Precio']}}
+        </div>
+        {% endfor %}
+    </div>
+
+
+<hr><hr>
+
+<!--CONTACTO-->
+<footer id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+
+                <h3>Contactanos</h3>
+
+                <form method="POST" action="{{url_for('contactos')}}" >
+
+                    <div>
+                        <input type="text" name="Nombre" placeholder="Nombre" class="form-control">
+                    </div>        
+                    <div>
+                        <input type="email" name="Email" placeholder="Email" class="form-control">
+                    </div>        
+                    <div>
+                        <input type="text" name="Celular" placeholder="Número de Celular" class="form-control">
+                    </div>           
+                    <div>
+                        <textarea rows="10" cols="30" name="Mensaje" placeholder="Mensaje" class="form-control"></textarea>
+                    </div>            
+                                
+                    <button type="submit">
+                                    Enviar
+                    </button>
+
+                </form>
+ 
+            </div>
+        </div>
+    </div>
+
+
+     <!--AÑADIDO RECIENTEMENTE-->
+    <div>
+        <hr>
+        <h5>INFORMACIÓN DE LA TIENDA</h5>
+        <div>
+            {{infoGeneral['Ubicacion']}}
+        </div>
+        <div>
+            {{infoGeneral['GoogleMaps']}}
+        </div>
+        <div>
+            {{infoGeneral['Telefono']}}
+        </div>
+        <div>
+            {{infoGeneral['Correo']}}
+        </div>
+        <hr>
+    </div>
+    <!---->
+
+
+
+    <a href="{{redesInfo['Facebook']}}">Facebook</a>
+    <a href="{{redesInfo['Instagram']}}">Instagram</a>
+    <a href="{{Whatsapp}}">Whatsapp</a>
+</footer>
+
+
+
+{% endblock %}

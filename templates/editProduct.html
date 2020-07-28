@@ -1,0 +1,36 @@
+
+
+{% extends "layout.html" %}
+{% block body %}
+
+<hr> 
+
+<form method="POST" action="/editProduct/{{product['_id']['$oid']}}" enctype="multipart/form-data">
+    <label for="NombreProduct">Nombre del Producto</label>
+    <input type="text" class="form-control" name="NombreProduct" placeholder="Ingrese el nombre" value="{{product['Nombre']}}">
+
+    <label for="Descripcion"> Descripción </label>
+    <input type="text" class="form-control" name="Descripcion" placeholder="Ingrese la descripción" value="{{product['Descripcion']}}">
+
+    <label for="Price">Precio</label>
+    <input type="text" class="form-control" name="Price" placeholder="Ingrese el precio" value="{{product['Precio']}}">
+    
+    <label for="Imagen">Imagen (MAX = 2MB)</label>
+    <input type="file" name="ImagenProduct" id="ImagenProduct">
+    <br>
+    <label for="MoreDescription">Descripción Amplia</label>
+    <br>
+    <textarea rows="20" cols="60" name="MoreDescription" placeholder="Descripción Amplia" class="form-control">{{MoreDescription}}</textarea>
+
+    <button type="submit">Guardar</button>
+
+    
+
+</form>
+<hr>
+    <img class="producto" src="../static/uploads/{{nombreFoto}}" alt="Producto">
+<hr>
+    <a href="/admiProducts">Volver</a>
+    <a href="/logout">Salir Sesión</a>
+
+{% endblock %}

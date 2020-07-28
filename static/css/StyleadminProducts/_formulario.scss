@@ -1,0 +1,19 @@
+form{
+    fieldset{
+       legend{
+           color: $ColorPrincipal;
+           font-family: 'Oswald', sans-serif;
+           text-transform: uppercase;
+        }   
+        label{
+           color: $ColorPrincipal;
+           font-weight: bold;
+       }
+
+       button{
+           font-family: 'Oswald', sans-serif;
+           text-transform: uppercase;
+       }
+
+   }
+}

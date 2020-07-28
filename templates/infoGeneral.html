@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleinfoGeneral/infoGeneral.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleredesSociales/pantalla.css')}}">
+{% endblock %}
+{% block body %}
+<article class="hidden" id="body">
+    <style>
+        .hidden{
+            overflow: hidden;
+        }
+    </style>
+    <div class="centrado" id="onload">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+
+<!--FORMULARIO-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form method="POST" action="{{url_for('infoGeneral')}}">
+                    <fieldset>
+                        <legend class="text-center display-5">Informacion de la tienda</legend>
+                        <div class="form-group clearfix">
+                            <label for="Ubicacion"><span class="col-md-1 col-md-offset-2 text-center">Ubicacion :</span></label>
+                            <div class="col-md-12">
+                                <input id="Ubicacion" name="Ubicacion" type="text" placeholder="Ingrese el nombre de su tienda" class="form-control" value="{{datos['Ubicacion']}}">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label for="GoogleMaps"><span class="col-md-1 col-md-offset-2 text-center">URL GoogleMaps :</span></label>
+                            <div class="col-md-12">
+                                <input id="GoogleMaps" name="GoogleMaps" type="text" placeholder="Ingrese su URL GoogleMaps" class="form-control" value="{{datos['GoogleMaps']}}">
+                            </div>
+                        </div>                          
+                        <div class="form-group clearfix">
+                            <label for="Telefono"><span class="col-md-1 col-md-offset-2 text-center">Teléfono :</span></label>   
+                            <div class="col-md-12">
+                                <input id="Telefono" name="Telefono" type="text" placeholder="Ingrese el telefono" class="form-control" value="{{datos['Telefono']}}">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label for="Correo"><span class="col-md-1 col-md-offset-2 text-center">Correo Electrónico :</span></label>   
+                            <div class="col-md-12">
+                                <input id="Correo" name="Correo" type="text" placeholder="Ingrese el correo electronico" class="form-control" value="{{datos['Correo']}}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <div class="col-md-12 text-center clearfix">
+                                <button type="submit" class="btn btn-info btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>                      
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="row col-md-12 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center">Informacion de la tienda</th>
+            </tr>
+        </thead>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Ubicacion</td>
+                    <td class="text-center">{{datos['Ubicacion']}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">URL GoogleMaps</td>
+                    <td class="text-center"><a href="{{datos['GoogleMaps']}}" target="_blank">URL Facebook</a></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Teléfono</td>
+                    <td class="text-center">{{datos['Telefono']}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Correo Electrónico</td>
+                    <td class="text-center">{{datos['Correo']}}</td>
+                </tr>
+        </table>
+        </div>
+    </div>
+    <!--
+        
+    -->
+    <a href="/admiProducts">Atras</a>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        window.onload=function(){
+        $('#onload').fadeOut();
+        $('#body').removeClass('hidden');
+        }
+    </script>
+</article>
+{% endblock %}

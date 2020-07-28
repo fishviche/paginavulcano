@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleredesSociales/redesSociales.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/StyleredesSociales/pantalla.css')}}">
+{% endblock %}
+{% block body %}
+<article class="hidden" id="body">
+    <style>
+        .hidden{
+            overflow: hidden;
+        }
+    </style>
+    <div class="centrado" id="onload">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <form class="form-horizontal" method="POST" action="{{url_for('confRedes')}}">
+                        <fieldset>
+                            <legend class="text-center pt-3 display-5 font-weight-bold">Redes sociales</legend>
+                            <div class="form-group clearfix mx-3">
+                                    <label for="Tienda" class="float-left"><span class="col-md-1 col-md-offset-2 text-center"><i class="fab fa-shopify fa-2x bigicon"></i></span></label>
+                                    <div class="col-md-11 float-left">
+                                        <input id="Tienda" name="Tienda" type="text" placeholder="Nombre de la tienda" class="form-control" value="{{datos['NombreTienda']}}" >
+                                    </div>
+                            </div>
+                            <div class="form-group clearfix mx-3">
+                                <label for="Facebook" class="float-left"><span class="col-md-1 col-md-offset-2 text-center"><i class="fab fa-facebook-square fa-2x bigicon"></i></span></label>
+                                <div class="col-md-11 float-left">
+                                    <input id="Facebook" name="Facebook" type="url" placeholder="Direccion de Facebook" class="form-control" value="{{datos['Facebook']}}">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix mx-3">
+                                <label for="Instagram" class="float-left"> <span class="col-md-1 col-md-offset-2 text-center"><i class="fab fa-instagram-square fa-2x bigicon"></i></span></label>   
+                                <div class="col-md-11 float-left">
+                                    <input id="Instagram" name="Instagram" type="url" placeholder="Direccion de Instragram" class="form-control" value="{{datos['Instagram']}}">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix mx-3">
+                                <label for="Whatsapp" class="float-left"> <span class="col-md-1 col-md-offset-2 text-center"><i class="fab fa-whatsapp-square fa-2x bigicon"></i></span></label>                        
+                                <div class="col-md-11 float-left">
+                                    <input id="Whatsapp" name="Whatsapp" type="text" placeholder="Número de Whatsapp" class="form-control" value="{{datos['Whatsapp']}}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12 text-center clearfix">
+                                    <button type="submit" class="btn btn-info btn-lg">Registrar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-md-12 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center">Administrador de redes sociales</th>
+            </tr>
+        </thead>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Nombre tienda</td>
+                    <td class="text-center">{{datos['NombreTienda']}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Facebook</td>
+                    <td class="text-center"><a href="{{datos['Facebook']}}" target="_blank">URL Facebook</a></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Instagram</td>
+                    <td class="text-center"><a href="{{datos['Instagram']}}" target="_blank">URL Instagram</a></td>
+                </tr>
+                <tr>
+                    <td class="text-center" style="width: 20%;">Whatsapp</td>
+                    <td class="text-center">{{datos['Whatsapp']}}</td>
+                </tr>
+        </table>
+        </div>
+    </div>
+    <!--
+        
+    -->
+    <a href="/admiProducts">Atras</a>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        window.onload=function(){
+        $('#onload').fadeOut();
+        $('#body').removeClass('hidden');
+        }
+    </script>
+</article>
+
+{% endblock %}

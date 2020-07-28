@@ -1,0 +1,46 @@
+/* SASS FORMULARIO */
+form fieldset legend {
+  color: #36A0FF;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+form fieldset .bigicon {
+  color: #36A0FF;
+}
+
+form fieldset button {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+/*SASS : TABLAS */
+table thead tr th {
+  background: #36A0FF;
+}
+
+table td {
+  background: #f7f1f1;
+}
+
+.custab {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5% 0;
+  -webkit-box-shadow: 3px 3px 2px #ccc;
+          box-shadow: 3px 3px 2px #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.custab:hover {
+  -webkit-box-shadow: 3px 3px 0px transparent;
+          box-shadow: 3px 3px 0px transparent;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+body {
+  background: #f7f1f1;
+}
+/*# sourceMappingURL=redesSociales.css.map */

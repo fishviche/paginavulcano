@@ -1,0 +1,6 @@
+Flask==1.1.2
+pymongo==3.10.1
+Flask-Pymongo==2.3.0
+Flask-Login==0.5.0
+Werkzeug==1.0.1
+random2==1.0.1
